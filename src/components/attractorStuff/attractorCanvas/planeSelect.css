@@ -1,0 +1,48 @@
+#colorSelect {
+    position: absolute;
+    z-index: 2;
+    left: 2%;
+    top: 5%;
+    text-align: center;
+
+}
+
+#colorSelectLabel {
+    color: aqua;
+    z-index: 2;
+    text-align: center;
+
+}
+
+#planeSelect {
+    position: absolute;
+    z-index: 2;
+    left: 2%;
+    top: 10%;
+    text-align: center;
+
+}
+
+#planeSelectLabel {
+    color: aqua;
+    z-index: 2;
+    text-align: center;
+
+}
+
+#attractorSelect {
+    position: absolute;
+    z-index: 2;
+    left: 2%;
+    top: 15%;
+    text-align: center;
+
+}
+
+#attractorSelectLabel {
+    color: aqua;
+    z-index: 2;
+    text-align: center;
+
+}
+

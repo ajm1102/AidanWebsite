@@ -1,0 +1,13 @@
+#tableCanvas {
+    position: absolute;
+    left: 500px;
+    top: 150px;
+}
+
+form {
+    position: absolute;
+    left: 500px;
+    top: 50px;
+    width: 500px;
+    height: 500px;
+}

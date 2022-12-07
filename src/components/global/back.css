@@ -1,0 +1,13 @@
+#Goback {
+    font-family: Arial, Helvetica, sans-serif;
+    top: 10%;
+    right: 12%;
+    width: 6%;    
+    position: absolute;
+
+    padding: 10px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+}

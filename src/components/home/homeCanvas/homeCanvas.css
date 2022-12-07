@@ -1,0 +1,9 @@
+#homecanvas {
+    position: fixed;
+    background:url(images/canvasBackground.png) ;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
