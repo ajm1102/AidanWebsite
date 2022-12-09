@@ -2,32 +2,31 @@ import { type } from '@testing-library/user-event/dist/type';
 import React, { useRef, useEffect } from 'react'
 import './tableCanvas.css'
 
+let colorMap = {}
 
-let sectionsArray = [];
+function sections(height, width, value) {
+    this.height = height;
+    this.width = width;
+    this.value = value;
+  }
 
 const TableCanvas = props => {
 
-    class sections {
-        constructor(width, height){
-            this.width = width;
-            this.height = height;
-        }
-    }
-
-
     const canvasRef = useRef(null)
 
-    let xd = 0;
+    let stepGlo = 0;
     let grid = null;
+    let canvasWidthGlo = null
 
     const generateTable = (event) => {
-        sectionsArray = [];
+        event.preventDefault()        
         const form = event.target;
         const columns = parseInt(form.querySelector("input").value);
-        xd = columns;
-        event.preventDefault()
+        stepGlo = columns;
+
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
+        canvasWidthGlo = ctx.canvas.width
         ctx.fillStyle = '#213522'
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         
@@ -44,7 +43,6 @@ const TableCanvas = props => {
             ctx.lineTo(500, count);
             ctx.stroke();
 
-            sectionsArray.push(new sections(count))
             count = count + steps;
         }
 
@@ -55,49 +53,50 @@ const TableCanvas = props => {
 
         for(var i = 0; i < grid.length; i++) {
             for(var j = 0; j < grid[i].length; j++) {
-                grid[i][j]  = new sections(width, height)
+                grid[j][i]  = new sections(width.toFixed(5), height.toFixed(5), 0)
                 width = width + steps
             }
             width = 0;
             height = height + steps
         }
-        console.log(grid)
     }
 
-    const canvasClick = (e) => {
-        const rect = canvasRef.current.getBoundingClientRect();
+    const canvasClick = (event) => {
+        event.preventDefault()
+
+        const rect = canvasRef.current.getBoundingClientRect(); // remove slowing down reg
         const canvas = canvasRef.current
         const ctx = canvas.getContext('2d')
 
-        const steps  = ctx.canvas.width/xd;
+        const step  = canvasWidthGlo/stepGlo;
 
-        const arrayLength = sectionsArray.length;
+        const x = ((event.clientX - rect.left) / (rect.right - rect.left) * canvas.width).toFixed(5) 
+        const y = ((event.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height).toFixed(5)
 
-        const widths = [];
-        const heights = [];
+        const cornerX = (x - (x % step)).toFixed(5)
+        const cornerY = (y - (y % step)).toFixed(5)
 
-        const x = (e.clientX - rect.left) / (rect.right - rect.left) * canvas.width;
-        const y = (e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
-     
-        for (var i = 0; i < arrayLength; i++) {
-            widths.push(sectionsArray[i].width)
-            heights.push(sectionsArray[i].height)
+        
+        let result = grid.flat().find(item => item.width === cornerX && item.height === cornerY);
+        console.log(grid)
+        if (colorMap[result.value] === undefined) {
+            colorMap[result.value] = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
         }
+        ctx.fillStyle = colorMap[result.value]
+        ctx.fillRect(cornerX, cornerY, step, step)
 
-
-        const closestX = widths.reduce((a, b) => {
-           
-            return Math.abs(b - x) < Math.abs(a - x) && b < x ? b : a;
-        });
-
-        const closestY = widths.reduce((a, b) => {
-            return Math.abs(b - y) < Math.abs(a - y) &&  b < y ? b : a;
-        });
-        console.log(closestX)
-        ctx.fillStyle = '#000000'
-        ctx.fillRect(closestX, closestY, steps, steps)
+        result.value = result.value + 1
     }
-    
+
+    const convertNumpyArray = (e) => {
+        const vals = grid.flat().map(a => a.value);
+        const text = vals.toString()
+        const copy = `img = np.array([${text}]).reshape(${stepGlo}, ${stepGlo})`
+        console.log(copy)
+        navigator.clipboard.writeText(copy)
+        
+    }
+
     return  <>
                 <form onSubmit={(evt) => generateTable(evt)} >
                     <label>
@@ -106,6 +105,7 @@ const TableCanvas = props => {
                     </label>
                     <input id='rows' type="submit" value="Submit"/>
                 </form>
+                <button id='convertNum' onClick={convertNumpyArray}>Copy</button>
                 <canvas id='tableCanvas' onClick={canvasClick} ref={canvasRef} width={'500px'} height={'500px'} {...props} />
             </>
   }

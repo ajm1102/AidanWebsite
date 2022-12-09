@@ -2,6 +2,13 @@
     position: absolute;
     left: 500px;
     top: 150px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 form {
@@ -10,4 +17,11 @@ form {
     top: 50px;
     width: 500px;
     height: 500px;
+}
+
+#convertNum {
+    position: absolute;
+    left: 500px;
+    top: 30px;
+
 }
