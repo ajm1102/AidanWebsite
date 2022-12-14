@@ -1,0 +1,13 @@
+
+#vectorCanvas {
+	position: absolute;
+	background-color: #cbd0d5;
+	top: 0px;
+	left: 0;
+	padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+}

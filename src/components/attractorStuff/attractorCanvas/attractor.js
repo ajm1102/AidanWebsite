@@ -2,19 +2,6 @@ import React, { useRef, useEffect, useCallback } from 'react'
 import { fourWings, Lorenz, Sprout } from './attractorCal/equations';
 import './attractor.css'
 
-const particlesArray = [];
-
-const canvasSize = {
-    height: window.innerHeight,
-    width: window.innerWidth ,
-}
-
-const mouse = {
-    x: undefined,
-    y: undefined,
-}
-
-
 class Particle {
   constructor(mouse, props){
 
@@ -58,7 +45,6 @@ class Particle {
 
   update(context){
     let cords = undefined;
-    let newProps = undefined;
 
     let x = this.x;
     let y = this.y;
@@ -102,21 +88,21 @@ class Particle {
   }
 }
 
+const particlesArray = [];
 
-  
+const canvasSize = {
+    height: window.innerHeight,
+    width: window.innerWidth ,
+}
+
+const mouse = {
+    x: undefined,
+    y: undefined,
+}
+
 const Attractor = props => {
 
   const canvasRef = useRef(null);
-
-  // useEffect(() => {
-  //   function handleResize() {
-  //     const context = canvasRef.current.getContext('2d');
-
-  //     handleParticles(context);
-  //   }
-
-  //   window.addEventListener('resize', handleResize)
-  // })
 
   function handleParticles(context){
     for (let i = 0; i < particlesArray.length; i++){

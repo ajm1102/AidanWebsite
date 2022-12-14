@@ -24,6 +24,11 @@ body {
     background-color: rgb(124, 143, 226);
     display: table-cell;
     vertical-align: middle;
+    text-align: center;
+	display:flex;
+	align-items: center;
+	margin:0;
+    padding:0;	
     
 }
 
@@ -35,4 +40,12 @@ a:visited {
     color: rgb(0, 0, 0);
     text-decoration: none !important;
 
+}
+
+
+input {
+	font-family: inherit;
+	line-height:inherit;
+	color:#2e3750;
+	min-width:12em;
 }
