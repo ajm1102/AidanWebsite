@@ -6,8 +6,8 @@ import React, { useState } from 'react'
 
 
 const EquationEnter = () => {
-    let [eqn1, setEqn1] = useState('2*x - 0*y');
-    let [eqn2, setEqn2] = useState('0*x-y');
+    let [eqn1, setEqn1] = useState('y-0.5*x');
+    let [eqn2, setEqn2] = useState('Math.sin(x)');
     let [dt, setDt] = useState('0.01');
 
 
