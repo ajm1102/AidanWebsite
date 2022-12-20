@@ -30,15 +30,20 @@ function App() {
 
     
   return (
-    <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={[<HomeCanvas/>, <HomeList/>]}></Route>
-          <Route exact path="/plot" element={[<HomeCanvas/>, <PlotlyPlot/>, <Back/>]}></Route>
-          <Route exact path="/LorenzAttractor" element={[<PlaneSelect/>, <Back/>]}></Route>
-          <Route exact path="/2dflows" element={[<Display/>, <Back/>]}></Route>
-          <Route exact path="/table" element={[<HomeCanvas/>, <Back/>, <TableCanvas/>]}></Route>
-        </Routes>
-    </BrowserRouter>
+    <>
+      <script type="text/javascript" id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+      </script>
+      <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={[<HomeCanvas/>, <HomeList/>]}></Route>
+            <Route exact path="/plot" element={[<HomeCanvas/>, <PlotlyPlot/>, <Back/>]}></Route>
+            <Route exact path="/LorenzAttractor" element={[<PlaneSelect/>, <Back/>]}></Route>
+            <Route exact path="/2dflows" element={[<Display/>, <Back/>]}></Route>
+            <Route exact path="/table" element={[<HomeCanvas/>, <Back/>, <TableCanvas/>]}></Route>
+          </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 

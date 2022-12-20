@@ -1,4 +1,4 @@
-export default function FixHighlight(e){
+export function FixHighlight(e){
     e.preventDefault();
     return false
 }

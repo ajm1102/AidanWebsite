@@ -42,10 +42,19 @@ a:visited {
 
 }
 
-
+/* 
 input {
 	font-family: inherit;
 	line-height:inherit;
 	color:#2e3750;
 	min-width:12em;
+    flex-direction:column;
+} */
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height:1.5;
+	font-size:1em;
+	margin: 0;
+
 }
