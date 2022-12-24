@@ -7,7 +7,7 @@ import { MathComponent } from "mathjax-react";
 import React, { useState } from 'react'
 
 
-const EquationEnter = () => {
+const Display2D = () => {
     let [eqn1, setEqn1] = useState('y-0.5*x');
     let [eqn2, setEqn2] = useState('Math.sin(x)');
     let [dt, setDt] = useState('0.01');
@@ -33,4 +33,4 @@ const EquationEnter = () => {
     );
 }
  
-export default EquationEnter;
+export default Display2D;

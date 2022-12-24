@@ -1,0 +1,55 @@
+
+
+#eqnInputForm {
+    height: 1px;
+    top: 10%;
+    right: 10%;
+    position: absolute;
+    text-align: right;
+}
+
+#eqnInputForm {
+    height: 1px;
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+}
+//#eqnInputForm label       { text-align:right; }
+
+// input, label {
+//     display: inline-block;
+//     width: 140px;
+//     text-align: right;
+// }​
+
+
+
+
+// #dxdtinput {
+//     top: 22%;
+//     right: 22%;
+//     position: inherit;
+// }
+
+// #dydtinput {
+//     top: 32%;
+//     right: 22%;
+//     position: inherit;
+//     background-color: red($color: #d72f2f);
+// }
+
+// #dtinput {
+//     top: 42%;
+//     right: 22%;
+//     position: inherit;
+//     background-color: red($color: #d72f2f);
+// }
+
+
+
+
+#hiddenCanvas {
+	display: none;
+}
+
+
