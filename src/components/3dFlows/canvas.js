@@ -259,7 +259,9 @@ function redrawaxis() {
 
       tckStart = tckStart + tckStep
     }
-    console.log(props.plane)
+
+
+    
     if (props.plane == 'xy') {
       ctx.fillText('x',(canvasDefault.width-30 ) , (canvasDefault.height/2 + cameraOffset.y + 20) );
       ctx.fillText('y',(canvasDefault.width/2 + cameraOffset.x - 20) , (canvasDefault.height - 900) );

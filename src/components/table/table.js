@@ -107,6 +107,7 @@ const TableCanvas = props => {
                 </form>
                 <button id='convertNum' onClick={convertNumpyArray}>Copy</button>
                 <canvas id='tableCanvas' onClick={canvasClick} ref={canvasRef} width={'500px'} height={'500px'} {...props} />
+                <h4 id='numpyText'>asdsd</h4>
             </>
   }
 

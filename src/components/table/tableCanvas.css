@@ -1,7 +1,7 @@
 #tableCanvas {
     position: absolute;
-    left: 500px;
-    top: 150px;
+    left: 30%;
+    top: 10%;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -13,15 +13,15 @@
 
 form {
     position: absolute;
-    left: 500px;
-    top: 50px;
+    left: 30%;
+    top: 6%;
     width: 500px;
     height: 500px;
 }
 
 #convertNum {
     position: absolute;
-    left: 500px;
-    top: 30px;
+    left: 30%;   
+    top: 8%;
 
 }
