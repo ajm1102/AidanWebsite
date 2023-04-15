@@ -1,22 +1,25 @@
-import { type } from '@testing-library/user-event/dist/type';
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState} from 'react'
 import './tableCanvas.css'
+import './checkbox.css'
+import ExampleShowcase from './tableExample.js'
 
-let colorMap = {}
+
+let colorMap = {0: '#213522'}
 
 function sections(height, width, value) {
     this.height = height;
     this.width = width;
     this.value = value;
   }
+let grid = null;
+let stepGlo = 0;    
+let canvasWidthGlo = null
+
 
 const TableCanvas = props => {
 
     const canvasRef = useRef(null)
 
-    let stepGlo = 0;
-    let grid = null;
-    let canvasWidthGlo = null
 
     const generateTable = (event) => {
         event.preventDefault()        
@@ -61,8 +64,8 @@ const TableCanvas = props => {
         }
     }
 
-    const canvasClick = (event) => {
-        event.preventDefault()
+    const canvasClick = (e) => {
+        e.preventDefault()
 
         const rect = canvasRef.current.getBoundingClientRect(); // remove slowing down reg
         const canvas = canvasRef.current
@@ -70,44 +73,70 @@ const TableCanvas = props => {
 
         const step  = canvasWidthGlo/stepGlo;
 
-        const x = ((event.clientX - rect.left) / (rect.right - rect.left) * canvas.width).toFixed(5) 
-        const y = ((event.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height).toFixed(5)
+        const x = ((e.clientX - rect.left) / (rect.right - rect.left) * canvas.width).toFixed(5) 
+        const y = ((e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height).toFixed(5)
 
         const cornerX = (x - (x % step)).toFixed(5)
         const cornerY = (y - (y % step)).toFixed(5)
 
-        
         let result = grid.flat().find(item => item.width === cornerX && item.height === cornerY);
-        console.log(grid)
+     
+        console.log(result.value)
+        if (decreaseBool === false){
+        result.value = result.value + 1
+        } else { result.value = result.value - 1}
+
         if (colorMap[result.value] === undefined) {
             colorMap[result.value] = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
         }
         ctx.fillStyle = colorMap[result.value]
         ctx.fillRect(cornerX, cornerY, step, step)
 
-        result.value = result.value + 1
+        console.log(colorMap)
     }
 
     const convertNumpyArray = (e) => {
-        const vals = grid.flat().map(a => a.value);
-        const text = vals.toString()
-        const copy = `img = np.array([${text}]).reshape(${stepGlo}, ${stepGlo})`
-        console.log(copy)
-        navigator.clipboard.writeText(copy)
-        
-    }
+        let vals = grid.flat().map(a => a.value);
+        let text = vals.toString()
+        let copy = `img = np.array([${text}]).reshape(${stepGlo}, ${stepGlo})`
 
-    return  <>
-                <form onSubmit={(evt) => generateTable(evt)} >
-                    <label>
-                        Name:
-                        <input type="text" name="name" />
-                    </label>
-                    <input id='rows' type="submit" value="Submit"/>
-                </form>
-                <button id='convertNum' onClick={convertNumpyArray}>Copy</button>
-                <canvas id='tableCanvas' onClick={canvasClick} ref={canvasRef} width={'500px'} height={'500px'} {...props} />
-                <h4 id='numpyText'>asdsd</h4>
+        setNumpyText(copy)
+    }
+    let [numpyTextt, setNumpyText] = useState('');
+    let [decreaseBool, setdecreaseBool] = useState(false);
+
+
+    return  <>  
+            <div class='overallContainer'>
+                <div class='overallContainerItem'>
+                    <div class='canvasContainer'>
+                        <div class='canvasContainerItem' id='canvasContainerItem1'>
+                            <form onSubmit={(evt) => generateTable(evt)} >
+                            <label>
+                                Name:
+                                <input type="text" name="name" />
+                            </label>
+                            <input id='rows' type="submit" value="Submit"/>
+                            </form>
+                        </div>
+                        <div class='canvasContainerItem' id='canvasContainerItem2'>
+                            <button id='convertNum' onClick={convertNumpyArray}>Copy</button>
+                        </div>
+                        <div class='canvasContainerItem' id='canvasContainerItem3'>
+                            <canvas id='tableCanvas' onClick={canvasClick} ref={canvasRef} width={'500px'} height={'500px'} {...props} />
+                        </div>
+                        <div class='canvasContainerItem' id='canvasContainerItem4'>
+                            <label class="container">Decrease
+                                <input type="checkbox" onChange={() => decreaseBool === false ? setdecreaseBool(true): decreaseBool === true ? setdecreaseBool(false) : false}></input>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class='overallContainerItem'>
+                    <ExampleShowcase numpyTexttt={numpyTextt}/>
+                </div>
+            </div>
             </>
   }
 

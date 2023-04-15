@@ -1,7 +1,5 @@
-#tableCanvas {
-    position: absolute;
-    left: 30%;
-    top: 10%;
+ #tableCanvas {
+
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -11,17 +9,32 @@
     user-select: none;
 }
 
-form {
-    position: absolute;
-    left: 30%;
-    top: 6%;
-    width: 500px;
-    height: 500px;
+.canvasContainer {
+    
+    display: grid;
+    grid-template-areas:
+    'inputI decreaseI copyI'
+    'tableI tableI tableI';
+    grid-template-columns: 5fr 3fr 1fr;
+    grid-template-rows: 1fr 7fr;
+    
+  }
+
+.canvasContainerItem {
+    background-color: steelblue;
+    padding: 20px;
+    border: skyblue 1px solid;
 }
 
-#convertNum {
-    position: absolute;
-    left: 30%;   
-    top: 8%;
-
+#canvasContainerItem1{
+    grid-area: inputI;
+}
+#canvasContainerItem2{
+    grid-area: copyI;
+}
+#canvasContainerItem3{
+    grid-area: tableI;
+}
+#canvasContainerItem4{
+    grid-area: decreaseI;
 }

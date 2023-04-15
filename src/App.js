@@ -43,7 +43,6 @@ function App() {
             <Route exact path="/LorenzAttractor" element={[<PlaneSelect/>, <Back/>]}></Route>
             <Route exact path="/2dflows" element={[<Display2D/>, <Back/>]}></Route>
             <Route exact path="/3dflows" element={[<Display3D/>, <Back/>]}></Route>
-
             <Route exact path="/table" element={[<HomeCanvas/>, <Back/>, <TableCanvas/>]}></Route>
           </Routes>
       </BrowserRouter>

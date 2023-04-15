@@ -1,0 +1,36 @@
+.exampleUseContainer{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+      justify-content: center;
+
+
+}
+
+.overallContainer{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 37.5%;
+    top: 4%;
+    text-align: center;
+
+    
+}
+
+.overallContainerItem{
+ 
+}
+
+#numpyText {
+
+    height: auto;
+    max-width: 300px;
+    text-align: center;
+    word-wrap: break-word; 
+
+}
+
+#tablenumpyImg {
+
+}
