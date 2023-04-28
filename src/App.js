@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import {HashRouter , Routes, Route } from "react-router-dom";
 import HomeCanvas from './components/home/homeCanvas/homeCanvas';
 import HomeList from './components/home/homeList/homeList';
 import Back from './components/global/back';
@@ -36,7 +36,7 @@ function App() {
       <script type="text/javascript" id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
       </script>
-      <BrowserRouter basename='/AidanWebstie'>
+      <HashRouter>
           <Routes>
             <Route exact path="/" element={[<HomeCanvas/>, <HomeList/>]}></Route>
             <Route exact path="/plot" element={[<HomeCanvas/>, <PlotlyPlot/>, <Back/>]}></Route>
@@ -45,7 +45,7 @@ function App() {
             <Route exact path="/3dflows" element={[<Display3D/>, <Back/>]}></Route>
             <Route exact path="/table" element={[<HomeCanvas/>, <Back/>, <TableCanvas/>]}></Route>
           </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }
