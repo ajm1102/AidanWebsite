@@ -36,7 +36,7 @@ function App() {
       <script type="text/javascript" id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
       </script>
-      <HashRouter>
+      <HashRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route exact path="/" element={[<HomeCanvas/>, <HomeList/>]}></Route>
             <Route exact path="/plot" element={[<HomeCanvas/>, <PlotlyPlot/>, <Back/>]}></Route>
