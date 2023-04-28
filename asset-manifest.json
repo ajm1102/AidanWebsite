@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/%7BAidanWebsite%7D/static/css/main.56068ec5.css",
-    "main.js": "/%7BAidanWebsite%7D/static/js/main.a07eb0f9.js",
+    "main.js": "/%7BAidanWebsite%7D/static/js/main.55538e90.js",
     "static/media/canvasBackground.png": "/%7BAidanWebsite%7D/static/media/canvasBackground.6b93e8876975f8d466d9.png",
     "static/media/example1.png": "/%7BAidanWebsite%7D/static/media/example1.d5205a478f938e2af9e7.png",
     "index.html": "/%7BAidanWebsite%7D/index.html",
     "main.56068ec5.css.map": "/%7BAidanWebsite%7D/static/css/main.56068ec5.css.map",
-    "main.a07eb0f9.js.map": "/%7BAidanWebsite%7D/static/js/main.a07eb0f9.js.map"
+    "main.55538e90.js.map": "/%7BAidanWebsite%7D/static/js/main.55538e90.js.map"
   },
   "entrypoints": [
     "static/css/main.56068ec5.css",
-    "static/js/main.a07eb0f9.js"
+    "static/js/main.55538e90.js"
   ]
 }
